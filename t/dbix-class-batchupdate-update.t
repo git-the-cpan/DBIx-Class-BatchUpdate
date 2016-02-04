@@ -41,7 +41,7 @@ my $resultset = Test::MockObject->new
         search => sub {
             my $self = shift;
             my ($args) = @_;
-            push($search_args, $args);
+            push(@$search_args, $args);
             Test::MockObject->new
                 ->mock(update => sub { $update_call_count++ }),
             },

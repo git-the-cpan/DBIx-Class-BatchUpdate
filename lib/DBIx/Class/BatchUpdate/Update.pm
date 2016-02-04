@@ -1,5 +1,5 @@
 package DBIx::Class::BatchUpdate::Update;
-$DBIx::Class::BatchUpdate::Update::VERSION = '1.000';
+$DBIx::Class::BatchUpdate::Update::VERSION = '1.001';
 use Moo;
 use autobox::Core;
 use true;

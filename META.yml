@@ -25,4 +25,4 @@ requires:
   warnings: '0'
 resources:
   bugtracker: https://github.com/jplindstrom/p5-DBIx-Class-BatchUpdate/issues
-version: '1.000'
+version: '1.001'

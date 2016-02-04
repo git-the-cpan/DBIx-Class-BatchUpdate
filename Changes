@@ -2,6 +2,11 @@
 Feature oriented Revision history for DBIx-Class-BatchUpdate
 ============================================================
 
+1.001 -- 2016-02-04 19:00:36 UTC
+
+* Fix https://github.com/jplindstrom/p5-DBIx-Class-BatchUpdate/issues/2
+
+
 1.000 -- 2016-02-04 15:10:57 UTC
 
 * First release
