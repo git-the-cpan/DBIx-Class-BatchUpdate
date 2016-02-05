@@ -1,5 +1,5 @@
 package DBIx::Class::BatchUpdate;
-$DBIx::Class::BatchUpdate::VERSION = '1.003';
+$DBIx::Class::BatchUpdate::VERSION = '1.004';
 use base qw(DBIx::Class);
 use strict;
 use warnings;
@@ -23,7 +23,6 @@ sub batch_update {
 =head1 NAME
 
 DBIx::Class::BatchUpdate - Update batches of DBIC rows with as few queries as possible
-
 
 =head1 SYNOPSIS
 
@@ -96,8 +95,10 @@ Make the fewest number of queries given the different values to
 update.
 
 The $rows must all be of the same ResultSet class as $resultset. $rows
-may well be an empty arrayref. All the $rows must already exist in the
-database and have an ->id.
+may well be an empty arrayref.
+
+All the $rows must already exist in the database and have an ->id. The
+PK column itself must not be dirty.
 
 
 
@@ -113,6 +114,14 @@ Example:
 This is functionally the same as the above.
 
 Note that all $rows must be of the same Result class.
+
+
+
+=head1 CAVEATS
+
+=head2 Multi-column primary keys
+
+BatchUpdate only works with resultsets that have a single column PK.
 
 
 

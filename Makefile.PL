@@ -16,6 +16,7 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "DBIx::Class::BatchUpdate",
   "PREREQ_PM" => {
+    "Carp" => 0,
     "DBIx::Class" => 0,
     "Moo" => 0,
     "Storable" => 0,
@@ -27,10 +28,11 @@ my %WriteMakefileArgs = (
   },
   "TEST_REQUIRES" => {
     "Test::Differences" => 0,
+    "Test::Exception" => 0,
     "Test::MockObject" => 0,
     "Test::More" => 0
   },
-  "VERSION" => "1.003",
+  "VERSION" => "1.004",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -38,10 +40,12 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
+  "Carp" => 0,
   "DBIx::Class" => 0,
   "Moo" => 0,
   "Storable" => 0,
   "Test::Differences" => 0,
+  "Test::Exception" => 0,
   "Test::MockObject" => 0,
   "Test::More" => 0,
   "autobox::Core" => 0,
