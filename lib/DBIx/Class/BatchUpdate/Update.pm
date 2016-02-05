@@ -1,10 +1,10 @@
 package DBIx::Class::BatchUpdate::Update;
-$DBIx::Class::BatchUpdate::Update::VERSION = '1.002';
+$DBIx::Class::BatchUpdate::Update::VERSION = '1.003';
 use Moo;
 use autobox::Core;
 use true;
 
-use Digest::MD5 "md5";
+use Storable qw/ nfreeze /;
 
 use DBIx::Class::BatchUpdate::Batch;
 
@@ -45,22 +45,18 @@ sub batch_key {
     my ($key_value) = @_;
     keys %$key_value or return undef;
 
-    # Assume the pk isn't dirty
-    return join(
-        ", ",
-        map { $self->safe_key_value($_, $key_value->{ $_ }) }
-        sort keys %$key_value,
+    # sort hash keys for a stable representation
+    local $Storable::canonical = 1;
+    return nfreeze(
+        {
+            # Assume the pk isn't dirty
+            map {
+                my $value = $key_value->{$_};
+                $_ => defined($value) ? "$value" : undef;
+            }
+            keys %$key_value,
+        },
     );
-}
-
-sub safe_key_value {
-    my $self = shift;
-    my ($key, $value) = @_;
-    my $safe_value = defined $value
-        ? md5("$value")
-        : "undef";
-
-    return "$_: $safe_value";
 }
 
 sub update {

@@ -1,7 +1,7 @@
 
 
 This archive contains the distribution DBIx-Class-BatchUpdate,
-version 1.002:
+version 1.003:
 
   Update batches of DBIC rows with as few queries as possible
 

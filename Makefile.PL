@@ -17,8 +17,8 @@ my %WriteMakefileArgs = (
   "NAME" => "DBIx::Class::BatchUpdate",
   "PREREQ_PM" => {
     "DBIx::Class" => 0,
-    "Digest::MD5" => 0,
     "Moo" => 0,
+    "Storable" => 0,
     "autobox::Core" => 0,
     "base" => 0,
     "strict" => 0,
@@ -30,7 +30,7 @@ my %WriteMakefileArgs = (
     "Test::MockObject" => 0,
     "Test::More" => 0
   },
-  "VERSION" => "1.002",
+  "VERSION" => "1.003",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -39,8 +39,8 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "DBIx::Class" => 0,
-  "Digest::MD5" => 0,
   "Moo" => 0,
+  "Storable" => 0,
   "Test::Differences" => 0,
   "Test::MockObject" => 0,
   "Test::More" => 0,

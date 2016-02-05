@@ -1,5 +1,5 @@
 package DBIx::Class::BatchUpdate;
-$DBIx::Class::BatchUpdate::VERSION = '1.002';
+$DBIx::Class::BatchUpdate::VERSION = '1.003';
 use base qw(DBIx::Class);
 use strict;
 use warnings;

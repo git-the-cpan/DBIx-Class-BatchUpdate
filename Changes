@@ -2,10 +2,16 @@
 Feature oriented Revision history for DBIx-Class-BatchUpdate
 ============================================================
 
+1.003 -- 2016-02-04 22:01:55 UTC
+
+* Re-Fix for #1 - Replace magic values for separator and undef with
+  Storable serialization for performance
+
+
 1.002 -- 2016-02-04 21:10:16 UTC
 
 * Fix for #1 - Replace magic values for separator and undef with
-  hashed values
+  md5 hash
 
 
 1.001 -- 2016-02-04 19:00:36 UTC

@@ -1,5 +1,5 @@
 package DBIx::Class::BatchUpdate::Batch;
-$DBIx::Class::BatchUpdate::Batch::VERSION = '1.002';
+$DBIx::Class::BatchUpdate::Batch::VERSION = '1.003';
 use Moo;
 use true;
 

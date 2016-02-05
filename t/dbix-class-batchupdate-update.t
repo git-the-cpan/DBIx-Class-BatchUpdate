@@ -4,6 +4,8 @@ use Test::More;
 use Test::Differences;
 use Test::MockObject;
 
+use Storable qw/ thaw /;
+
 use DBIx::Class::BatchUpdate::Update;
 
 
@@ -13,11 +15,12 @@ my $empty_batch = DBIx::Class::BatchUpdate::Update->new({ rows => [] });
 
 
 ### batch_key
+my $key_value = { id => 3, price => 42, author_id => undef };
 my $md5 = qr/[^,]+/;
-like(
-    $empty_batch->batch_key({ id => 3, price => 42, author_id => undef }),
-    qr/^author_id: undef, id: $md5, price: $md5$/,
-    "Correct batch_key",
+eq_or_diff(
+    thaw( $empty_batch->batch_key($key_value) ),
+    $key_value,
+    "Correct batch_key (as far as we can tell)",
 );
 
 
