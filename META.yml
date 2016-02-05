@@ -17,6 +17,7 @@ meta-spec:
 name: DBIx-Class-BatchUpdate
 requires:
   DBIx::Class: '0'
+  Digest::MD5: '0'
   Moo: '0'
   autobox::Core: '0'
   base: '0'
@@ -25,4 +26,4 @@ requires:
   warnings: '0'
 resources:
   bugtracker: https://github.com/jplindstrom/p5-DBIx-Class-BatchUpdate/issues
-version: '1.001'
+version: '1.002'

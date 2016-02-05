@@ -1,8 +1,10 @@
 package DBIx::Class::BatchUpdate::Update;
-$DBIx::Class::BatchUpdate::Update::VERSION = '1.001';
+$DBIx::Class::BatchUpdate::Update::VERSION = '1.002';
 use Moo;
 use autobox::Core;
 use true;
+
+use Digest::MD5 "md5";
 
 use DBIx::Class::BatchUpdate::Batch;
 
@@ -38,8 +40,6 @@ sub _build_batches {
     return [ sort { $a->key cmp $b->key } $key_batch->values ];
 }
 
-my $separator = "\tD::C::R::U\t";
-my $undef = "\t\t\t<undef>\t\t\t";
 sub batch_key {
     my $self = shift;
     my ($key_value) = @_;
@@ -47,10 +47,20 @@ sub batch_key {
 
     # Assume the pk isn't dirty
     return join(
-        $separator,
-        map { "((($_: " . ( $key_value->{ $_ } // $undef ) . ")))" }
+        ", ",
+        map { $self->safe_key_value($_, $key_value->{ $_ }) }
         sort keys %$key_value,
     );
+}
+
+sub safe_key_value {
+    my $self = shift;
+    my ($key, $value) = @_;
+    my $safe_value = defined $value
+        ? md5("$value")
+        : "undef";
+
+    return "$_: $safe_value";
 }
 
 sub update {

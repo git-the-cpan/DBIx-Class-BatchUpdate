@@ -12,13 +12,13 @@ my $empty_batch = DBIx::Class::BatchUpdate::Update->new({ rows => [] });
 
 
 
-# batch_key
-is(
+### batch_key
+my $md5 = qr/[^,]+/;
+like(
     $empty_batch->batch_key({ id => 3, price => 42, author_id => undef }),
-    "(((author_id: \t\t\t<undef>\t\t\t)))\tD::C::R::U\t(((id: 3)))\tD::C::R::U\t(((price: 42)))",
+    qr/^author_id: undef, id: $md5, price: $md5$/,
     "Correct batch_key",
 );
-
 
 
 ### Empty rows
